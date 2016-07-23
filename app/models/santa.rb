@@ -6,4 +6,7 @@ class Santa < ActiveRecord::Base
   validates :email, presence: true, format: { with: Devise.email_regexp }
   validates :email, uniqueness: { scope: :list_id }
 
+  has_many :giver_id, through: "GiverReceiver"
+  has_many :receiver_id, through: "GiverReceiver"
+
 end
